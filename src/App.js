@@ -1,24 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import CpuMonitorHeaderContainer from "./components/CpuMonitorHeaderContainer";
+import AuthFormContainer from "./components/AuthFormContainer";
+import { Route, Switch } from "react-router-dom";
+import { ProtectedRoute } from "./components/Protected.route";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+        <Route path="/" exact component={AuthFormContainer} />
+        <ProtectedRoute path="/monitor" component={CpuMonitorHeaderContainer} />
+        <Route path="*" component={() => "404 NOT FOUND"} />
+      </Switch>
     </div>
   );
 }
