@@ -2,14 +2,13 @@ import React from 'react';
 
 function AuthForm(props) {
   return (
-    <div className="w3-container w3-display-middle">
+    <div className="container">
       <h1 className="w3-container w3-blue-grey">Log In</h1>
-      <form onSubmit={props.onSubmit} className="w3-container w3-card-4">
+      <form onSubmit={props.onSubmit}>
         <label>
           Email:
           <br />
           <input
-            className="w3-input"
             type="email"
             name="email"
             onChange={props.onChange}
@@ -22,7 +21,6 @@ function AuthForm(props) {
           Password:
           <br />
           <input
-            className="w3-input"
             name="password"
             type="password"
             onChange={props.onChange}
@@ -31,7 +29,6 @@ function AuthForm(props) {
           />
         </label>
         <input
-          className="w3-button w3-section w3-blue-grey w3-ripple"
           type="submit"
           value="Login"
         />

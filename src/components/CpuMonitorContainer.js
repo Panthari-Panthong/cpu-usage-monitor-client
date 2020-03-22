@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import request from "superagent";
-import CpuMonitorHeader from "./CpuMonitorHeader";
-import CpuLinechart from "./CpuLinechart";
+import CpuMonitor from "./CpuMonitor";
 
 class CpuMonitorHeaderContainer extends Component {
   state = {
@@ -17,10 +16,17 @@ class CpuMonitorHeaderContainer extends Component {
   }
 
   getData() {
-    const url = "http://localhost:4000";
+    const url = "https://guarded-reaches-76881.herokuapp.com";
     request
       .get(`${url}/usage`)
       .then(response => {
+        var today = new Date();
+        var time =
+          today.getHours() +
+          ":" +
+          today.getMinutes() +
+          ":" +
+          today.getSeconds();
         this.setState({
           usage: response.body.usage,
           second: this.state.second + 1,
@@ -28,23 +34,16 @@ class CpuMonitorHeaderContainer extends Component {
             ...this.state.data,
             {
               percent: this.state.usage,
-              name: this.state.second + "s"
+              name: time
             }
           ]
-        });     
+        });
       })
       .catch(console.error);
   }
 
-
-
   render() {
-    return (
-      <div>
-        <CpuMonitorHeader usage={this.state.usage} />
-        <CpuLinechart data={this.state.data} />
-      </div>
-    );
+    return <CpuMonitor usage={this.state.usage} data={this.state.data} />;
   }
 }
 
