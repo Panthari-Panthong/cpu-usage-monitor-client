@@ -5,7 +5,6 @@ import CpuMonitor from "./CpuMonitor";
 class CpuMonitorHeaderContainer extends Component {
   state = {
     usage: 0,
-    second: 1,
     data: []
   };
 
@@ -29,7 +28,6 @@ class CpuMonitorHeaderContainer extends Component {
           today.getSeconds();
         this.setState({
           usage: response.body.usage,
-          second: this.state.second + 1,
           data: [
             ...this.state.data,
             {

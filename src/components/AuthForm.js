@@ -12,7 +12,7 @@ function AuthForm(props) {
             type="email"
             name="email"
             onChange={props.onChange}
-            defaultValue={props.values.email}
+            value={props.values.email}
             placeholder="Email"
           />
         </label>
@@ -24,7 +24,7 @@ function AuthForm(props) {
             name="password"
             type="password"
             onChange={props.onChange}
-            defaultValue={props.values.password}
+            value={props.values.password}
             placeholder="Password"
           />
         </label>
